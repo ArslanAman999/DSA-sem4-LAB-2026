@@ -1,27 +1,31 @@
-#include "Stack.h"
 #pragma once
-class MyStack : public Stack
+#include "Stack.h"
+
+template <class T>
+class MyStack : public Stack<T>
 {
 public:
-	MyStack(int CI = 0) : Stack(CI) {};
-	MyStack(const MyStack& ma) : Stack(ma) {};
-	void push(int v)
-	{
-		if (!isFull())
-		{
-			values[++currentIndex] = v;
-			return;
-		}
-		//cout << "Array is full\n";
-	}
-	bool pop(int& v)
-	{
-		if (!isEmpty())
-		{
-			v = values[currentIndex--];
-			return true;
-		}
-		return false;
-	}
-};
 
+    MyStack(int c = 0) : Stack<T>(c) {}
+
+    MyStack(const MyStack& ma) : Stack<T>(ma) {}
+
+    void push(const T& v)
+    {
+        if (!this->isFull())
+        {
+            this->values[++this->currentIndex] = v;
+        }
+    }
+
+    bool pop(T& v)
+    {
+        if (!this->isEmpty())
+        {
+            v = this->values[this->currentIndex--];
+            return true;
+        }
+
+        return false;
+    }
+};

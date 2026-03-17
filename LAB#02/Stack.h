@@ -1,33 +1,44 @@
 #pragma once
+
+template <class T>
 class Stack
 {
 protected:
-	int currentIndex;
-	int* values;
-	int maxCapacity;
+    int currentIndex;
+    T* values;
+    int maxCapacity;
 
 public:
-	Stack(int _maxCapacity = 0)
-	{
-		currentIndex = -1;
-		maxCapacity = _maxCapacity;
-		values = new int[maxCapacity] {0};
 
-	}
-	Stack(const Stack& AA)
-	{
-		maxCapacity = AA.maxCapacity;
-		values = new int[maxCapacity] {0};
-	}
-	virtual void push(int v) = 0; // increments currentIndex and add value if not full
-	virtual bool pop(int& value) = 0; // if not empty returns the value at the currentIndex and decrementscurrentIndex
-	bool isEmpty()
-	{
-		return (currentIndex < 0);
-	}
-	bool isFull()
-	{
-		return (currentIndex == maxCapacity - 1);
-	}
+    Stack(int _maxCapacity = 0)
+    {
+        currentIndex = -1;
+        maxCapacity = _maxCapacity;
+        values = new T[maxCapacity];
+    }
+
+    Stack(const Stack& AA)
+    {
+        maxCapacity = AA.maxCapacity;
+        currentIndex = AA.currentIndex;
+
+        values = new T[maxCapacity];
+
+        for (int i = 0; i <= currentIndex; i++)
+            values[i] = AA.values[i];
+    }
+
+    virtual void push(const T& v) = 0;
+    virtual bool pop(T& value) = 0;
+
+    bool isEmpty()
+    {
+        return (currentIndex < 0);
+    }
+
+    bool isFull()
+    {
+        return (currentIndex == maxCapacity - 1);
+    }
 
 };
