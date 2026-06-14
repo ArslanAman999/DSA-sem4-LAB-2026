@@ -2,6 +2,23 @@
 using namespace std;
 #include"BinarySearchTree.h"
 
+/*
+For the split function, we just save the address of the left and 
+right nodes of the original into new DST variables and then change their address to nullptr.
+
+
+
+To insert a node, we have to take into consideration that that node 
+might have a further child. So for that, we do the following. We insert
+the data of the node, then we traverse to the left by
+recalling the function to that node's left child, and then we do the same to the right child. This loop continues until null ptr is returned.
+
+But the we have the base condition that node is equals to null PTR, if that node is a null PTR, we return. 
+If not, then we recall the function to the left and then we call to the right. When that node is found, we delete 
+the node and set the node to null PTR.
+
+*/
+
 template <class T>
 void split(BinarySearchTree<T>& bt, BinarySearchTree<T>& btLeft, BinarySearchTree<T>& btRight)
 {
