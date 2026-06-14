@@ -2,6 +2,13 @@
 using namespace std;
 #include"BinarySearchTree.h"
 
+/*
+For task number two, the BFS functions are implemented in
+the exact same way as they were implemented for the global functions in task one, the only
+difference being that instead of using iterative loop code, we used recursive functions.All the conditions, check conditions, base conditions,
+loops are the exact same. Instead of using loops, helper functions are used to get the same behavior.
+*/
+
 int main()
 {
     BinarySearchTree<int> bst;
