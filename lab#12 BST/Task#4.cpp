@@ -6,6 +6,10 @@ using namespace std;
 #include"BinarySearchTree.h"
 
 
+/*
+used the template to creat string type bst and then just used the function to do add the tasks
+*/
+
 int main()
 {
     BinarySearchTree<string> tree;
